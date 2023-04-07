@@ -8,8 +8,11 @@ public class Television implements Comparable<Television> {
     private final int screenSize;
     private final boolean smart;
 
-    public Television(final String make, final String model, final boolean smart, final int screenSize, final int resolution) {
-        if (make == null || make.isEmpty() || model == null || model.isEmpty() || screenSize < 32 || resolution < 720) {
+    @SuppressWarnings("checkstyle:WhitespaceAround")
+    public Television(final String make, final String model, final boolean smart, final int screenSize, final int resolution)
+    {
+        if (make == null || make.isEmpty() || model == null || model.isEmpty() || screenSize < 32 || resolution < 720)
+        {
             throw new IllegalArgumentException("Invalid parameter in constructor");
         }
         this.make = make;
@@ -17,10 +20,12 @@ public class Television implements Comparable<Television> {
         this.smart = smart;
         this.screenSize = screenSize;
         this.resolution = resolution;
-        if(resolution==2160){
+        if (resolution==2160)
+        {
             this.fourK=true;
         }
-        else{
+        else
+        {
             this.fourK=false;
         }
     }
@@ -63,7 +68,7 @@ public class Television implements Comparable<Television> {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (o==this) {
             return true;
         }
@@ -75,9 +80,7 @@ public class Television implements Comparable<Television> {
                         if (this.screenSize == another.screenSize) {
                             if (this.resolution == another.resolution) {
                                 if (this.smart == another.smart) {
-                                    if (this.fourK == another.fourK) {
-                                        return true;
-                                    }
+                                    return this.fourK == another.fourK;
                                 }
                             }
                         }
@@ -94,7 +97,7 @@ public class Television implements Comparable<Television> {
     }
 
     @Override
-    public int compareTo(Television another) {
+    public int compareTo(final Television another) {
         if(another==null){
             throw new IllegalArgumentException("null parameter in the compareTo method");
         }
